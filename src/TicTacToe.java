@@ -45,6 +45,8 @@ public class TicTacToe {
             for (int j = 0; j < 3; j++) {
                 JButton button = new JButton();
                 button.setFont(new Font("Arial", Font.BOLD, 80));
+                button.setBackground(new Color(250, 218, 221));
+                button.setForeground(darkPink);
                 button.addActionListener(new ButtonListener());
                 board[i][j] = button;
                 boardPanel.add(button);
@@ -53,10 +55,18 @@ public class TicTacToe {
 
         // Reset
         JButton resetButton = new JButton("Reset");
+        resetButton.setFont(new Font("Arial", Font.BOLD, 30));
+        resetButton.setBackground(new Color(255,182,193));
+        resetButton.setForeground(new Color(255,255,255));
         resetButton.addActionListener(new ResetButtonListener());
         textPanel.add(resetButton, BorderLayout.SOUTH);
 
         frame.add(boardPanel);
+    }
+    class ResetButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            resetBoard();
+        }
     }
 
     class ButtonListener implements ActionListener {
@@ -78,11 +88,6 @@ public class TicTacToe {
         }
     }
 
-    class ResetButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            resetBoard();
-        }
-    }
 
 
     boolean checkWin() {
